@@ -13,6 +13,13 @@ let books = [
   },
 ];
 
+function Book(title, author, pageNumber, readStatus) {
+  this.title = title;
+  this.author = author;
+  this.pageNumber = pageNumber;
+  this.readStatus = readStatus;
+}
+
 function createBookCard(book) {
   const bookSection = document.querySelector(".book-section");
   const bookCard = document.createElement("article");
