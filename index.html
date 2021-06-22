@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>School Library</title>
   </head>
   <body>
@@ -26,6 +27,33 @@
           <button class="add-new-book-button">Add New Book</button>
         </div>
       </section>
+      <!--Modal box-->
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>Add New Book</h2>
+          </div>
+          <div class="modal-body">
+            <form>
+              <label for="author">Author: </label>
+              <input type="text" id="author" name="book-info" />
+              <label for="title">Title: </label>
+              <input type="text" id="title" name="book-info" />
+              <label for="pages">Page Number: </label>
+              <input type="number" id="pages" name="book-info" />
+              <input type="radio" id="read" name="read-status" checked />
+              <label for="read">Read</label>
+              <input type="radio" id="not-read" name="read-status" />
+              <label for="not-read">Read</label>
+              <input type="submit" id="submit-button" value="Add" />
+            </form>
+          </div>
+          <div class="modal-footer">
+            <h3>Modal Footer</h3>
+          </div>
+        </div>
+      </div>
       <section class="book-section"></section>
     </main>
     <script src="script.js"></script>
