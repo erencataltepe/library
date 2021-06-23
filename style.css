@@ -16,11 +16,12 @@ main {
   color: #1f567a;
   width: 70%;
   margin: 0 auto;
+  min-height: 500px;
 }
 
 h2 {
   text-align: center;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #163d57;
 }
 
 .filter-section {
@@ -42,7 +43,8 @@ h2 {
   color: #ebf4fa;
 }
 
-.add-new-book-button {
+.add-new-book-button,
+.add-button {
   border: none;
   font-size: 20px;
   background-color: #163d57;
@@ -50,7 +52,8 @@ h2 {
   padding: 10px;
 }
 
-.add-new-book-button:hover {
+.add-new-book-button:hover,
+.add-button:hover {
   background-color: #1f567a;
 }
 
@@ -144,8 +147,8 @@ button {
 /* Modal Header */
 .modal-header {
   padding: 2px 16px;
-  background-color: #5cb85c;
-  color: white;
+  background-color: #163d57;
+  color: #ebf4fa;
 }
 
 /* Modal Body */
