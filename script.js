@@ -1,5 +1,48 @@
-let library = [];
-let currentBookId = 0;
+let library = [
+  {
+    title: "Deneme",
+    author: "Deneme",
+    pageNumber: 120,
+    readStatus: true,
+    id: 0,
+  },
+  {
+    title: "Deneme",
+    author: "Deneme",
+    pageNumber: 120,
+    readStatus: true,
+    id: 1,
+  },
+  {
+    title: "Deneme",
+    author: "Deneme",
+    pageNumber: 120,
+    readStatus: true,
+    id: 2,
+  },
+  {
+    title: "Deneme",
+    author: "Deneme",
+    pageNumber: 120,
+    readStatus: true,
+    id: 3,
+  },
+  {
+    title: "Deneme",
+    author: "Deneme",
+    pageNumber: 120,
+    readStatus: true,
+    id: 4,
+  },
+  {
+    title: "Deneme",
+    author: "Deneme",
+    pageNumber: 120,
+    readStatus: true,
+    id: 5,
+  },
+];
+let currentBookId = 6;
 
 //Book constructor function
 function Book(title, author, pageNumber, readStatus, id) {
@@ -37,9 +80,14 @@ function createBookCard(book) {
   });
 
   bookTitle.innerText = book.title;
-  authorInfo.innerText = book.author;
-  pageInfo.innerText = book.pageNumber;
-  readInfo.innerText = book.readStatus;
+  authorInfo.innerText = "By " + book.author;
+  pageInfo.innerText = book.pageNumber + " pages";
+  if (book.readStatus) {
+    readInfo.innerText = "Read";
+  } else {
+    readInfo.innerText = " Not Read";
+  }
+
   readInfo.classList.add("read-status");
 
   bookCard.setAttribute("data-id", book.id);
@@ -102,10 +150,10 @@ function changeReadStatusOnBookCard(id) {
   bookCards.forEach((bookCard) => {
     if (bookCard.dataset.id == id) {
       const readStatus = bookCard.querySelector(".read-status");
-      if (readStatus.textContent == "true") {
-        readStatus.textContent = "false";
+      if (readStatus.textContent == "Read") {
+        readStatus.textContent = "Not Read";
       } else {
-        readStatus.textContent = "true";
+        readStatus.textContent = "Read";
       }
     }
   });
@@ -179,3 +227,5 @@ window.onclick = function (event) {
     modal.style.display = "none";
   }
 };
+
+renderBooks(library);
