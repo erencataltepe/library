@@ -95,6 +95,10 @@ h2 {
   background-color: #59af59;
 }
 
+button {
+  cursor: pointer;
+}
+
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
