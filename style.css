@@ -1,10 +1,41 @@
+body {
+  background-color: #163d57;
+}
+
 h1 {
   text-align: center;
+  color: #ebf4fa;
+}
+
+main {
+  background-color: #ebf4fa;
+  color: #1f567a;
+  width: 70%;
+  margin: 0 auto;
 }
 
 h2 {
   text-align: center;
   border-bottom: 1px solid black;
+}
+
+.filter-section {
+  margin-top: 10px;
+}
+
+.filter-buttons {
+  border: none;
+  font-size: 20px;
+  background-color: transparent;
+  color: #1f567a;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.selected {
+  background-color: #163d57;
+  color: #ebf4fa;
 }
 
 .buttons {
