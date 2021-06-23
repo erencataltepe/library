@@ -33,9 +33,21 @@ h2 {
   padding-right: 10px;
 }
 
-.selected {
+.selected-filter {
   background-color: #163d57;
   color: #ebf4fa;
+}
+
+.add-new-book-button {
+  border: none;
+  font-size: 20px;
+  background-color: #163d57;
+  color: #ebf4fa;
+  padding: 10px;
+}
+
+.add-new-book-button:hover {
+  background-color: #1f567a;
 }
 
 .buttons {
