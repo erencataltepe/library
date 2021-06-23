@@ -1,23 +1,12 @@
-let books = [
-  {
-    title: "Çalıkuşu",
-    author: "Reşat Nuri Güntekin",
-    pages: 354,
-    readStatus: true,
-  },
-  {
-    title: "Nutuk",
-    author: "Mustafa Kemal Atatürk",
-    pages: 560,
-    readStatus: false,
-  },
-];
+let library = [];
+let currentBookId = 0;
 
-function Book(title, author, pageNumber, readStatus) {
+function Book(title, author, pageNumber, readStatus, id) {
   this.title = title;
   this.author = author;
   this.pageNumber = pageNumber;
   this.readStatus = readStatus;
+  this.id = id;
 }
 
 function createBookCard(book) {
@@ -30,9 +19,10 @@ function createBookCard(book) {
 
   bookTitle.innerText = book.title;
   authorInfo.innerText = book.author;
-  pageInfo.innerText = book.pages;
+  pageInfo.innerText = book.pageNumber;
   readInfo.innerText = book.readStatus;
 
+  bookCard.setAttribute("data-id", book.id);
   bookCard.appendChild(bookTitle);
   bookCard.appendChild(authorInfo);
   bookCard.appendChild(pageInfo);
@@ -40,10 +30,20 @@ function createBookCard(book) {
   bookSection.appendChild(bookCard);
 }
 
-function renderBooks(books) {
-  books.forEach((book) => {
+function renderBooks(library) {
+  library.forEach((book) => {
     createBookCard(book);
   });
+}
+
+function addBookToLibrary(book) {
+  library.push(book);
+}
+
+function clearInputs() {
+  document.getElementById("new-title").value = "";
+  document.getElementById("new-author").value = "";
+  document.getElementById("new-pages").value = "";
 }
 
 //const newBookButton = document.querySelector(".add-new-book-button");
@@ -59,7 +59,32 @@ const newBookButton = document.querySelector(".add-new-book-button");
 // Get the <span> element that closes the modal
 const span = document.getElementsByClassName("close")[0];
 
-const addBookButton 
+const addBookButton = document.querySelector(".add-button");
+
+//Add book to the books array
+addBookButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  const newTitle = document.getElementById("new-title");
+  const newAuthor = document.getElementById("new-author");
+  const newPages = document.getElementById("new-pages");
+  const read = document.getElementById("read-select");
+
+  //check read selection is selected or not
+  const newBook = new Book(
+    newTitle.value,
+    newAuthor.value,
+    newPages.value,
+    read.checked,
+    currentBookId
+  );
+
+  currentBookId += 1;
+  addBookToLibrary(newBook);
+  createBookCard(newBook);
+  clearInputs();
+  modal.style.display = "none";
+  console.log(library);
+});
 
 // When the user clicks on the button, open the modal
 newBookButton.onclick = function () {
@@ -78,4 +103,4 @@ window.onclick = function (event) {
   }
 };
 
-renderBooks(books);
+renderBooks(library);
