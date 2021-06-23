@@ -19,6 +19,15 @@ function createBookCard(book) {
   const pageInfo = document.createElement("div");
   const readInfo = document.createElement("div");
   const removeButton = document.createElement("button");
+  const toggleReadStatusButton = document.createElement("button");
+
+  //Create toggle read status button and add event listener
+  toggleReadStatusButton.classList.add("toggle-read-status-button");
+  toggleReadStatusButton.textContent = "Change Read Status";
+  toggleReadStatusButton.setAttribute("data-id", book.id);
+  toggleReadStatusButton.addEventListener("click", (e) => {
+    toggleReadStatus(e.target.dataset.id);
+  });
 
   removeButton.classList.add("remove-buttons");
   removeButton.textContent = "Remove Book";
@@ -31,6 +40,7 @@ function createBookCard(book) {
   authorInfo.innerText = book.author;
   pageInfo.innerText = book.pageNumber;
   readInfo.innerText = book.readStatus;
+  readInfo.classList.add("read-status");
 
   bookCard.setAttribute("data-id", book.id);
   bookCard.classList.add("book-cards");
@@ -39,6 +49,7 @@ function createBookCard(book) {
   bookCard.appendChild(pageInfo);
   bookCard.appendChild(readInfo);
   bookCard.appendChild(removeButton);
+  bookCard.appendChild(toggleReadStatusButton);
   bookSection.appendChild(bookCard);
 }
 
@@ -62,10 +73,42 @@ function clearInputs() {
 }
 
 //Remove Book
-
 function removeBook(removeId) {
   removeBookFromLibrary(removeId);
   removeBookFromLayout(removeId);
+}
+
+function toggleReadStatus(bookId) {
+  changeReadStatusOfBook(bookId);
+  changeReadStatusOnBookCard(bookId);
+}
+
+//Toggle read status on library array
+function changeReadStatusOfBook(id) {
+  library.forEach((book) => {
+    if (book.id == id) {
+      if (book.readStatus) {
+        book.readStatus = false;
+      } else {
+        book.readStatus = true;
+      }
+    }
+  });
+}
+
+//Toggle read status on html layout
+function changeReadStatusOnBookCard(id) {
+  const bookCards = document.querySelectorAll(".book-cards");
+  bookCards.forEach((bookCard) => {
+    if (bookCard.dataset.id == id) {
+      const readStatus = bookCard.querySelector(".read-status");
+      if (readStatus.textContent == "true") {
+        readStatus.textContent = "false";
+      } else {
+        readStatus.textContent = "true";
+      }
+    }
+  });
 }
 
 //Remove book from library
