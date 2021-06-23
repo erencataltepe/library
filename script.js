@@ -1,48 +1,5 @@
-let library = [
-  {
-    title: "Deneme",
-    author: "Deneme",
-    pageNumber: 120,
-    readStatus: true,
-    id: 0,
-  },
-  {
-    title: "Deneme",
-    author: "Deneme",
-    pageNumber: 120,
-    readStatus: true,
-    id: 1,
-  },
-  {
-    title: "Deneme",
-    author: "Deneme",
-    pageNumber: 120,
-    readStatus: true,
-    id: 2,
-  },
-  {
-    title: "Deneme",
-    author: "Deneme",
-    pageNumber: 120,
-    readStatus: true,
-    id: 3,
-  },
-  {
-    title: "Deneme",
-    author: "Deneme",
-    pageNumber: 120,
-    readStatus: true,
-    id: 4,
-  },
-  {
-    title: "Deneme",
-    author: "Deneme",
-    pageNumber: 120,
-    readStatus: true,
-    id: 5,
-  },
-];
-let currentBookId = 6;
+let library = [];
+let currentBookId = 0;
 
 //Book constructor function
 function Book(title, author, pageNumber, readStatus, id) {
@@ -84,8 +41,10 @@ function createBookCard(book) {
   pageInfo.innerText = book.pageNumber + " pages";
   if (book.readStatus) {
     readInfo.innerText = "Read";
+    bookCard.dataset.key = "read";
   } else {
     readInfo.innerText = " Not Read";
+    bookCard.dataset.key = "not-read";
   }
 
   readInfo.classList.add("read-status");
@@ -152,8 +111,10 @@ function changeReadStatusOnBookCard(id) {
       const readStatus = bookCard.querySelector(".read-status");
       if (readStatus.textContent == "Read") {
         readStatus.textContent = "Not Read";
+        bookCard.dataset.key = "not-read";
       } else {
         readStatus.textContent = "Read";
+        bookCard.dataset.key = "read";
       }
     }
   });
@@ -173,6 +134,45 @@ function removeBookFromLayout(id) {
       bookCard.remove();
     }
   });
+}
+
+//Change filter
+function changeFilter(key) {
+  filterButtons.forEach((filterButton) => {
+    if (filterButton.dataset.key == key) {
+      filterButton.classList.add("selected-filter");
+    } else {
+      filterButton.classList.remove("selected-filter");
+    }
+  });
+}
+
+//Filter books
+function filterBooks(key, bookCards) {
+  switch (key) {
+    case "read":
+      bookCards.forEach((bookCard) => {
+        if (bookCard.dataset.key != "read") {
+          bookCard.classList.add("remove-card");
+        } else {
+          bookCard.classList.remove("remove-card");
+        }
+      });
+      break;
+    case "not-read":
+      bookCards.forEach((bookCard) => {
+        if (bookCard.dataset.key != "not-read") {
+          bookCard.classList.add("remove-card");
+        } else {
+          bookCard.classList.remove("remove-card");
+        }
+      });
+      break;
+    case "all":
+      bookCards.forEach((bookCard) => {
+        bookCard.classList.remove("remove-card");
+      });
+  }
 }
 
 // Get the modal
@@ -227,5 +227,16 @@ window.onclick = function (event) {
     modal.style.display = "none";
   }
 };
+
+//Get filter buttons
+
+const filterButtons = document.querySelectorAll(".filter-buttons");
+filterButtons.forEach((filterButton) => {
+  filterButton.addEventListener("click", (e) => {
+    const bookCards = document.querySelectorAll(".book-cards");
+    changeFilter(e.target.dataset.key);
+    filterBooks(e.target.dataset.key, bookCards);
+  });
+});
 
 renderBooks(library);

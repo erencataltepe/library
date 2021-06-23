@@ -18,9 +18,17 @@
     <main>
       <section class="buttons">
         <div class="filter-section">
-          <button class="filter-buttons selected-filter">All</button>
-          <button class="filter-buttons">Read</button>
-          <button class="filter-buttons">Not Read</button>
+          <button
+            id="all"
+            class="filter-buttons selected-filter"
+            data-key="all"
+          >
+            All
+          </button>
+          <button id="read" class="filter-buttons" data-key="read">Read</button>
+          <button id="not-read" class="filter-buttons" data-key="not-read">
+            Not Read
+          </button>
         </div>
         <div class="manage-buttons">
           <button class="add-new-book-button">Add New Book</button>

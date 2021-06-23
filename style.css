@@ -98,6 +98,10 @@ h2 {
   background-color: #dc7171;
 }
 
+.remove-card {
+  display: none;
+}
+
 .toggle-read-status-button {
   background-color: #59af59;
 }
