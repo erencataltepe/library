@@ -1,10 +1,14 @@
 body {
   background-color: #163d57;
+  font-family: "Maven Pro", Sans-Serif;
+  font-size: 16px;
 }
 
 h1 {
   text-align: center;
   color: #ebf4fa;
+  font-family: "Patua One", Cursive;
+  font-size: 44px;
 }
 
 main {
@@ -51,7 +55,7 @@ h2 {
 }
 
 .book-cards {
-  border: 3px solid #479ad1;
+  border: 2px solid #479ad1;
   padding: 5px;
   border-radius: 2%;
 }
