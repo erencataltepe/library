@@ -50,6 +50,12 @@ h2 {
   background-color: #1f567a;
 }
 
+.book-cards {
+  border: 3px solid #479ad1;
+  padding: 5px;
+  border-radius: 2%;
+}
+
 .buttons {
   display: flex;
   flex-direction: column;
@@ -76,6 +82,17 @@ h2 {
 .remove-buttons,
 .toggle-read-status-button {
   margin-top: 7px;
+  border: none;
+  color: #ebf4fa;
+  padding: 10px;
+}
+
+.remove-buttons {
+  background-color: #dc7171;
+}
+
+.toggle-read-status-button {
+  background-color: #59af59;
 }
 
 /* The Modal (background) */
