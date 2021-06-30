@@ -1,13 +1,15 @@
 let library = [];
 let currentBookId = 0;
 
-//Book constructor function
-function Book(title, author, pageNumber, readStatus, id) {
-  this.title = title;
-  this.author = author;
-  this.pageNumber = pageNumber;
-  this.readStatus = readStatus;
-  this.id = id;
+//Book Class
+class Book {
+  constructor(title, author, pageNumber, readStatus, id) {
+    this.title = title;
+    this.author = author;
+    this.pageNumber = pageNumber;
+    this.readStatus = readStatus;
+    this.id = id;
+  }
 }
 
 //Create bookcard html for a book object
